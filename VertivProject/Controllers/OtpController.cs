@@ -10,36 +10,23 @@ namespace VertivProject.Controllers
     public class OtpController : ControllerBase
     {
         private readonly OtpService _otpService;
-        private readonly AppSettings _appSettings;
 
-        public OtpController(OtpService otpService, IOptions<AppSettings> appSettings)
+        public OtpController(OtpService otpService)
         {
             _otpService = otpService;
-            _appSettings = appSettings.Value;
         }
 
         [HttpPost]
-        [Route("GenerateOtpKey")]
+        [Route("GenerateOtp")]
         public ActionResult<OtpResponse> GenerateOtpKey([FromBody] OtpRequest request)
         {
-            // Generate OTP with timestamp
-            var otp = _otpService.GenerateOtp(request);
-
-            // Create the response with OTP and remaining time
-            var response = new OtpResponse()
-            {
-                Otp = otp,
-                RemainingSeconds = _appSettings.KeyValidationPeriod
-            };
-
-            return Ok(response);
+            return Ok(_otpService.GenerateOtp(request));
         }
 
         [HttpPost]
         [Route("ValidateOtp")]
         public ActionResult<bool> ValidateOtp([FromBody] OtpValidationRequest request)
         {
-            var remainingTime = _otpService.GetRemainingTime(request);
             return Ok(_otpService.ValidateOtp(request));
         }
     }

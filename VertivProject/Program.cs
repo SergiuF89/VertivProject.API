@@ -1,4 +1,5 @@
 
+using VertivProject.Interfaces;
 using VertivProject.Models;
 using VertivProject.Services;
 
@@ -13,15 +14,16 @@ namespace VertivProject
             // Add services to the container.
             builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
             builder.Services.AddScoped<OtpService>();
+            builder.Services.AddScoped<IEncriptionService, EncriptionService>();
 
             // Add CORS services to the DI container
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowLocalhost", policy =>
                 {
-                    policy.WithOrigins("http://localhost:4200") // Allow your frontend URL
-                          .AllowAnyMethod() // Allow any HTTP method (GET, POST, etc.)
-                          .AllowAnyHeader(); // Allow any headers
+                    policy.WithOrigins("http://localhost:4200")
+                          .AllowAnyMethod()
+                          .AllowAnyHeader();
                 });
             });
 

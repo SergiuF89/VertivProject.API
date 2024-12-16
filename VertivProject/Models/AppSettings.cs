@@ -2,7 +2,10 @@
 {
     public class AppSettings
     {
-        public string OtpKey { get; set; }
+        #nullable disable
+        public string OtpSecretKey { get; set; }
+        #nullable enable
         public long KeyValidationPeriod { get; set; }
+        public long KeyValidationPeriodTolerance { get; set; }
     }
 }

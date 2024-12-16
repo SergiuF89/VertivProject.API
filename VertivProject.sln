@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VertivProject", "VertivProject\VertivProject.csproj", "{5B85F5BB-29F9-471C-9D8E-64A195BC0C27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VertivProject", "VertivProject\VertivProject.csproj", "{5B85F5BB-29F9-471C-9D8E-64A195BC0C27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VertivProject.Tests", "VertivProject.Tests\VertivProject.Tests.csproj", "{BC392CBC-6789-455E-8F0E-8B78406D4FAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{5B85F5BB-29F9-471C-9D8E-64A195BC0C27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B85F5BB-29F9-471C-9D8E-64A195BC0C27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B85F5BB-29F9-471C-9D8E-64A195BC0C27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC392CBC-6789-455E-8F0E-8B78406D4FAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC392CBC-6789-455E-8F0E-8B78406D4FAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC392CBC-6789-455E-8F0E-8B78406D4FAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC392CBC-6789-455E-8F0E-8B78406D4FAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
