@@ -21,19 +21,18 @@ namespace VertivProject.Services
             _otpValidationTolerance = appSettings.Value.KeyValidationPeriodTolerance;
         }
 
-        public OtpResponse GenerateOtp(OtpRequest request)
+        public OtpResponse GenerateOtp(OtpGeneratorRequest request)
         {
             try
             {
-                var currentTime = request.DateTime;
-                var key = $"{request.UserId}-{currentTime:yyyyMMddHHmmss}";
+                var key = $"{request.UserId}-{request.DateTime:yyyyMMddHHmmss}";
 
                 using (var hmac = new HMACSHA1(Encoding.UTF8.GetBytes(_secretKey)))
                 {
                     var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(key));
                     var otpInt = Math.Abs(BitConverter.ToInt32(hash, 0));
                     var otp = (otpInt % 1000000).ToString("D6");
-                    var expirationTime = currentTime.AddSeconds(_otpValidationPeriod + _otpValidationTolerance);
+                    var expirationTime = request.DateTime.AddSeconds(_otpValidationPeriod + _otpValidationTolerance);
                     var timestamp = ((DateTimeOffset)expirationTime).ToUnixTimeSeconds();
 
                     return new OtpResponse
@@ -56,12 +55,15 @@ namespace VertivProject.Services
             {
                 var generatedOtp = _encriptionService.DecryptString(request.Otp, _secretKey);
                 var generatedOtpCode = generatedOtp.Split('-')[0];
+
                 // Verify if user input otp code matches the generated otp code
                 if (generatedOtpCode != request.UserInputOtpCode)
                 {
                     return false;
                 }
+
                 var generatedOtpParts = generatedOtp.Split('-');
+
                 if (generatedOtpParts.Length != 2) return false;
 
                 var generatedOtpValue = generatedOtpParts[0];

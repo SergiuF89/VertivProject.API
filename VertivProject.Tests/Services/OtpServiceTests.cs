@@ -37,7 +37,7 @@ namespace VertivProject.Services
         public void GenerateOtp_ShouldReturnValidOtpResponse()
         {
             // Arrange
-            var request = new OtpRequest
+            var request = new OtpGeneratorRequest
             {
                 UserId = "TestUser",
                 DateTime = DateTime.UtcNow
@@ -57,7 +57,7 @@ namespace VertivProject.Services
         [Test]
         public void ValidateOtp_ShouldReturnTrueForValidOtp()
         {
-            OtpRequest generateOtpRequest = new OtpRequest
+            OtpGeneratorRequest generateOtpRequest = new OtpGeneratorRequest
             {
                 DateTime = DateTime.Now.AddSeconds(30),
                 UserId = "testuser",

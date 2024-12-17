@@ -18,7 +18,7 @@ namespace VertivProject.Controllers
 
         [HttpPost]
         [Route("GenerateOtp")]
-        public ActionResult<OtpResponse> GenerateOtpKey([FromBody] OtpRequest request)
+        public ActionResult<OtpResponse> GenerateOtpKey([FromBody] OtpGeneratorRequest request)
         {
             return Ok(_otpService.GenerateOtp(request));
         }

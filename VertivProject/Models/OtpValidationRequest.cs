@@ -2,7 +2,7 @@
 
 namespace VertivProject.Models
 {
-    public class OtpValidationRequest : OtpRequest
+    public class OtpValidationRequest : OtpGeneratorRequest
     {
         #nullable disable
         public string OtpCode { get; set; }

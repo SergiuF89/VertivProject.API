@@ -1,6 +1,6 @@
 ﻿namespace VertivProject.Models
 {
-    public class OtpRequest
+    public class OtpGeneratorRequest
     {
         #nullable disable
         public string UserId { get; set; }
